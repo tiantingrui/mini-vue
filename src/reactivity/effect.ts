@@ -8,7 +8,7 @@ class ReactiveEffect {
 
   run() {
     activeEffect = this;
-    this._fn();
+    return this._fn();
   }
 }
 const targetMap = new Map();
@@ -43,4 +43,6 @@ export function effect(fn) {
   // fn, 一上来就会去调用,可以去封装一个类，面向对象的思想
   const _effect = new ReactiveEffect(fn);
   _effect.run();
+
+  return _effect.run.bind(_effect);
 }
