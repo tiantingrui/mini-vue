@@ -60,6 +60,8 @@ export function track(target, key) {
 
 export function trigger(target, key, value) {
   let depsMap = targetMap.get(target);
+  console.log("targetMap", targetMap);
+  console.log("depsMap", depsMap);
   let dep = depsMap.get(key);
   for (const effect of dep) {
     if (effect.scheduler) {
