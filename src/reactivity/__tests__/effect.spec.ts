@@ -71,7 +71,10 @@ describe("effect", () => {
     obj.prop = 2;
     expect(dummy).toBe(2);
     stop(runner);
-    obj.prop = 3;
+    // obj.prop = 3;
+    // get set
+    // obj.prop = obj.prop + 1
+    obj.prop++;
 
     expect(dummy).toBe(2);
 
