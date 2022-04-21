@@ -1,5 +1,6 @@
+import { isObject } from "../shared";
 import { track, trigger } from "./effect";
-import { ReactiveFlags } from "./reactive";
+import { reactive, ReactiveFlags, readonly } from "./reactive";
 
 // 一上来就去创建一下，这样初始化的时候只会被调用一次，减少性能开销
 const get = createGetter();
@@ -15,6 +16,10 @@ function createGetter(isReadonly = false) {
       return isReadonly;
     }
     const res = Reflect.get(target, key);
+    // 看看 res 是不是object
+    if (isObject(res)) {
+      return isReadonly ? readonly(res) : reactive(res);
+    }
     if (!isReadonly) {
       // 依赖收集
       track(target, key);
