@@ -36,7 +36,7 @@
 - [x] 支持 effect.stop
 - [x] 支持 isReadonly
 - [ ] 支持 isProxy
-- [ ] 支持 shallowReadonly
+- [x] 支持 shallowReadonly
 - [ ] 支持 proxyRefs
 
 ### runtime-core
