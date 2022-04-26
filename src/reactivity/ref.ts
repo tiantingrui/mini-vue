@@ -6,6 +6,7 @@ class RefImpl {
   private _value: any;
   public dep;
   private _rawValue: any;
+  public __v_isRef = true;
   constructor(value) {
     // value -> reactive(value)
     // 1. 看看value是不是对象
@@ -39,4 +40,13 @@ export function ref(value) {
 
 function convert(value) {
   return isObject(value) ? reactive(value) : value;
+}
+
+export function isRef(ref) {
+  return !!ref.__v_isRef;
+}
+
+export function unRef(ref) {
+  // 看看是不是一个 ref 对象，是 -> ref.value , 不是 -> ref
+  return isRef(ref) ? ref.value : ref;
 }
