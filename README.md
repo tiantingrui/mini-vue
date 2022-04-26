@@ -37,7 +37,7 @@
 - [x] 支持 isReadonly
 - [x] 支持 isProxy
 - [x] 支持 shallowReadonly
-- [ ] 支持 proxyRefs
+- [x] 支持 proxyRefs
 
 ### runtime-core
 
